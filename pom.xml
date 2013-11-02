@@ -6,6 +6,7 @@
     <version>2</version>
   </parent>
   
+  <groupId>org.commonjava.googlecode.markdown4j</groupId>
   <artifactId>markdown4j</artifactId>
   <version>2.2-cj-1.0-SNAPSHOT</version>
   
@@ -34,7 +35,12 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <configuration>
             <includes>
-              <include>**/*</include>
+              <include>**/*Tester</include>
+              <include>**/EdgeCases</include>
+              <include>**/*Test</include>
+              <include>**/Test*</include>
+              <include>**/LineConventions</include>
+              <include>**/EscapeSpecialCharsWithinTagAttributes</include>
             </includes>
           </configuration>
         </plugin>

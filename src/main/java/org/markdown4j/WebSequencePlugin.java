@@ -75,8 +75,7 @@ public class WebSequencePlugin extends Plugin {
             int end = json.indexOf( "\"", start );
             
             if(start != -1 && end != -1) {
-                String surl =  "http://www.websequencediagrams.com/" + json.substring(start, end) ;	            	            
-                return surl;            	
+                return "http://www.websequencediagrams.com/" + json.substring(start, end) ;	            	                        	
             }
             return null;
             	            

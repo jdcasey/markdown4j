@@ -458,7 +458,7 @@ class Line
     {
         final LinkedList<String> tags = new LinkedList<String>();
         final StringBuilder temp = new StringBuilder();
-        int pos = this.leading;
+        int pos;
         if(this.value.charAt(this.leading + 1) == '!')
         {
             if(this.readXMLComment(this, this.leading) > 0)

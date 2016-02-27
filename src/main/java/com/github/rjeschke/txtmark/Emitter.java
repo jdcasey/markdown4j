@@ -1044,7 +1044,7 @@ class Emitter
         Line line = lines;
         
 		String idPlugin = meta;		
-		String sparams = null;
+		String sparams;
 		Map<String, String> params = null;
 		int iow = meta.indexOf(' '); 
 		if(iow != -1) {

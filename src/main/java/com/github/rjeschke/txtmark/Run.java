@@ -76,30 +76,34 @@ public class Run
     {
         // This is just a _hack_ ...
         BufferedReader reader = null;
-        if(args.length == 0)
-        {
-            System.err.println("No input file specified.");
-            System.exit(-1);
-        }
-        if(args.length > 1)
-        {
-            reader = new BufferedReader(new InputStreamReader(new FileInputStream(args[1]), "UTF-8"));
-            String line = reader.readLine();
-            while(line != null && !line.startsWith("<!-- ###"))
+        try {
+            if(args.length == 0)
             {
-                System.out.println(line);
-                line = reader.readLine();
+                System.err.println("No input file specified.");
+                System.exit(-1);
             }
-        }
-        System.out.println(Processor.process(new File(args[0])));
-        if(args.length > 1 && reader != null)
-        {
-            String line = reader.readLine();
-            while(line != null)
+            if(args.length > 1)
             {
-                System.out.println(line);
-                line = reader.readLine();
+                reader = new BufferedReader(new InputStreamReader(new FileInputStream(args[1]), "UTF-8"));
+                String line = reader.readLine();
+                while(line != null && !line.startsWith("<!-- ###"))
+                {
+                    System.out.println(line);
+                    line = reader.readLine();
+                }
             }
+            System.out.println(Processor.process(new File(args[0])));
+            if(args.length > 1 && reader != null)
+            {
+                String line = reader.readLine();
+                while(line != null)
+                {
+                    System.out.println(line);
+                    line = reader.readLine();
+                }                
+            }
+        } finally
+        {
             reader.close();
         }
     }

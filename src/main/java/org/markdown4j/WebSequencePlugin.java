@@ -7,6 +7,7 @@ import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
@@ -53,7 +54,7 @@ public class WebSequencePlugin extends Plugin {
             URL url = new URL("http://www.websequencediagrams.com");
             URLConnection conn = url.openConnection();
             conn.setDoOutput(true);
-            OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream());
+            OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream(), StandardCharsets.UTF_8);
             
             //write parameters
             writer.write(data);
@@ -61,7 +62,7 @@ public class WebSequencePlugin extends Plugin {
             
             // Get the response
             StringBuilder answer = new StringBuilder();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
             String line;
             while ((line = reader.readLine()) != null) {
                 answer.append(line);

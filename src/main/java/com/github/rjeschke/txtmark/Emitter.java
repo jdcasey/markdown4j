@@ -32,7 +32,7 @@ import org.markdown4j.Plugin;
 class Emitter
 {
     /** Link references. */
-    private final HashMap<String, LinkRef> linkRefs = new HashMap<String, LinkRef>();
+    private final HashMap<String, LinkRef> linkRefs = new HashMap<>();
     /** The configuration. */
     private final Configuration config;
     /** Extension flag. */
@@ -40,7 +40,7 @@ class Emitter
     /** Newline flag. */
     public boolean convertNewline2Br = false;
     /** Plugins references **/
-	private Map<String, Plugin> plugins = new HashMap<String, Plugin>();
+	private Map<String, Plugin> plugins = new HashMap<>();
     
     /** Constructor. */
     public Emitter(final Configuration config)
@@ -987,7 +987,7 @@ class Emitter
         Line line = lines;
         if(this.config.codeBlockEmitter != null)
         {
-            final ArrayList<String> list = new ArrayList<String>();
+            final ArrayList<String> list = new ArrayList<>();
             while(line != null)
             {
                 if(line.isEmpty)
@@ -1056,9 +1056,9 @@ class Emitter
 		}
 		
 		if(params == null) {
-			params = new HashMap<String, String>();
+			params = new HashMap<>();
 		}
-        final ArrayList<String> list = new ArrayList<String>();
+        final ArrayList<String> list = new ArrayList<>();
         while(line != null)
         {
             if(line.isEmpty)
@@ -1075,7 +1075,7 @@ class Emitter
     }
     
 	protected Map<String, String> parsePluginParams(String s) {
-		Map<String, String> params = new HashMap<String, String>();
+		Map<String, String> params = new HashMap<>();
 	     Pattern p = Pattern.compile("(\\w+)=\"*((?<=\")[^\"]+(?=\")|([^\\s]+))\"*");
 
 	     Matcher m = p.matcher(s);

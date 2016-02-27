@@ -130,17 +130,17 @@ class HTML
     };
     
     /** Character to entity encoding map. */
-    private final static HashMap<Character, String> encodeMap = new HashMap<Character, String>();
+    private final static HashMap<Character, String> encodeMap = new HashMap<>();
     /** Entity to character decoding map. */
-    private final static HashMap<String, Character> decodeMap = new HashMap<String, Character>();
+    private final static HashMap<String, Character> decodeMap = new HashMap<>();
     /** Set of valid HTML tags. */
-    private final static HashSet<String> HTML_ELEMENTS = new HashSet<String>();
+    private final static HashSet<String> HTML_ELEMENTS = new HashSet<>();
     /** Set of unsafe HTML tags. */
-    private final static HashSet<String> HTML_UNSAFE = new HashSet<String>();
+    private final static HashSet<String> HTML_UNSAFE = new HashSet<>();
     /** Set of HTML block level tags. */
-    private final static HashSet<String> HTML_BLOCK_ELEMENTS = new HashSet<String>();
+    private final static HashSet<String> HTML_BLOCK_ELEMENTS = new HashSet<>();
     /** Set of valid markdown link prefixes. */
-    private final static HashSet<String> LINK_PREFIX = new HashSet<String>();
+    private final static HashSet<String> LINK_PREFIX = new HashSet<>();
 
     static
     {

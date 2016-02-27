@@ -278,9 +278,9 @@ class Line
 
         if(this.value.length() - this.leading - this.trailing > 2
                 && (this.value.charAt(this.leading) == '*' || this.value.charAt(this.leading) == '-' || this.value
-                        .charAt(this.leading) == '_'))
+                        .charAt(this.leading) == '_')
+                && this.countChars(this.value.charAt(this.leading)) >= 3)
         {
-            if(this.countChars(this.value.charAt(this.leading)) >= 3)
                 return LineType.HR;
         }
 
@@ -304,9 +304,8 @@ class Line
                 return LineType.OLIST;
         }
 
-        if(this.value.charAt(this.leading) == '<')
+        if(this.value.charAt(this.leading) == '<' && this.checkHTML())
         {
-            if(this.checkHTML())
                 return LineType.XML;
         }
 
@@ -333,34 +332,28 @@ class Line
     private int readXMLComment(final Line firstLine, final int start)
     {
         Line line = firstLine;
-        if(start + 3 < line.value.length())
+        if(start + 3 < line.value.length() && line.value.charAt(2) == '-' && line.value.charAt(3) == '-')
         {
-            if(line.value.charAt(2) == '-' && line.value.charAt(3) == '-')
+            int pos = start + 4;
+            while(line != null)
             {
-                int pos = start + 4;
-                while(line != null)
+                while(pos < line.value.length() && line.value.charAt(pos) != '-')
                 {
-                    while(pos < line.value.length() && line.value.charAt(pos) != '-')
+                    pos++;
+                }
+                if(pos == line.value.length())
+                {
+                    line = line.next;
+                    pos = 0;
+                }
+                else
+                {
+                    if(pos + 2 < line.value.length() && line.value.charAt(pos + 1) == '-' && line.value.charAt(pos + 2) == '>')
                     {
-                        pos++;
+                        this.xmlEndLine = line;
+                        return pos + 3;
                     }
-                    if(pos == line.value.length())
-                    {
-                        line = line.next;
-                        pos = 0;
-                    }
-                    else
-                    {
-                        if(pos + 2 < line.value.length())
-                        {
-                            if(line.value.charAt(pos + 1) == '-' && line.value.charAt(pos + 2) == '>')
-                            {
-                                this.xmlEndLine = line;
-                                return pos + 3;
-                            }
-                        }
-                        pos++;
-                    }
+                    pos++;
                 }
             }
         }

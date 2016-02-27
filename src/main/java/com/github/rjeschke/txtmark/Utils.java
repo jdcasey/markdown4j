@@ -22,6 +22,11 @@ package com.github.rjeschke.txtmark;
  */
 class Utils
 {
+    private Utils()
+    {
+        
+    }
+    
     /** Random number generator value. */
     private static int RND = (int)System.nanoTime();
 

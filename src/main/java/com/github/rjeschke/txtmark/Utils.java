@@ -354,8 +354,8 @@ class Utils
     {
         for(int i = start; i < end; i++)
         {
-            final char c;
-            switch(c = in.charAt(i))
+            final char c = in.charAt(i);
+            switch(c)
             {
             case '&':
                 out.append("&amp;");
@@ -390,8 +390,8 @@ class Utils
     {
         for(int i = start; i < end; i++)
         {
-            final char c;
-            switch(c = in.charAt(i))
+            final char c = in.charAt(i);
+            switch(c)
             {
             case '&':
                 out.append("&amp;");
@@ -461,9 +461,9 @@ class Utils
     {
         for(int i = start; i < end; i++)
         {
-            final char c;
+            final char c = in.charAt(i);
             final int r = rnd();
-            switch(c = in.charAt(i))
+            switch(c)
             {
             case '&':
             case '<':

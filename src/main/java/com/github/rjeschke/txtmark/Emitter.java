@@ -1006,8 +1006,8 @@ class Emitter
                 {
                     for(int i = 4; i < line.value.length(); i++)
                     {
-                        final char c;
-                        switch(c = line.value.charAt(i))
+                        final char c = line.value.charAt(i);
+                        switch(c)
                         {
                         case '&':
                             out.append("&amp;");

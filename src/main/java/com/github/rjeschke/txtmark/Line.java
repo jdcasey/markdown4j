@@ -117,8 +117,8 @@ class Line
             final char ch = this.value.charAt(pos);
             if(ch == '\\' && pos + 1 < this.value.length())
             {
-                final char c;
-                switch(c = this.value.charAt(pos + 1))
+                final char c = this.value.charAt(pos + 1);
+                switch(c)
                 {
                 case '\\':
                 case '[':

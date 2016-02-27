@@ -770,11 +770,9 @@ public class Processor
             // To make compiler happy: add != null checks
             if ( isLinkRef && id != null && link != null )
             {
-                if ( id.toLowerCase()
-                       .equals( "$profile$" ) )
+                if ( id.equalsIgnoreCase( "$profile$" ) )
                 {
-                    this.emitter.useExtensions = this.useExtensions = link.toLowerCase()
-                                                                          .equals( "extended" );
+                    this.emitter.useExtensions = this.useExtensions = link.equalsIgnoreCase( "extended" );
                     lastLinkRef = null;
                 }
                 else

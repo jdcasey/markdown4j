@@ -129,7 +129,7 @@ public class Configuration
 
         private SpanEmitter specialLinkEmitter = null;
 
-        private final List<Plugin> plugins = new ArrayList<Plugin>();
+        private final List<Plugin> plugins = new ArrayList<>();
 
         /**
          * Constructor.

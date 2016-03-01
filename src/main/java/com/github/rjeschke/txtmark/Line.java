@@ -456,7 +456,7 @@ class Line
      */
     private boolean checkHTML()
     {
-        final LinkedList<String> tags = new LinkedList<String>();
+        final LinkedList<String> tags = new LinkedList<>();
         final StringBuilder temp = new StringBuilder();
         int pos = this.leading;
         if(this.value.charAt(this.leading + 1) == '!')

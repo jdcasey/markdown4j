@@ -11,7 +11,7 @@ public class YumlPlugin extends Plugin {
 
 	@Override
 	public void emit(final StringBuilder out, final List<String> lines, final Map<String, String> params) {
-		StringBuffer sb2 = new StringBuffer();
+	    StringBuilder sb2 = new StringBuilder();
 		for(String line : lines) {
 			line = line.trim();
 			if(line.length() > 0) {

@@ -60,7 +60,7 @@ public class WebSequencePlugin extends Plugin {
             writer.flush();
             
             // Get the response
-            StringBuffer answer = new StringBuffer();
+            StringBuilder answer = new StringBuilder();
             BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line;
             while ((line = reader.readLine()) != null) {

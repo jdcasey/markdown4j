@@ -64,6 +64,11 @@ import java.io.InputStreamReader;
  */
 public class Run
 {
+    private Run() 
+    {
+        //
+    }
+    
     /**
      * Static main.
      * 

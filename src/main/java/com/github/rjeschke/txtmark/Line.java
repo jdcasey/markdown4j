@@ -516,7 +516,7 @@ class Line
                                 tags.addLast(tag);
                             }
                         }
-                        if(tags.size() == 0)
+                        if(tags.isEmpty())
                         {
                             this.xmlEndLine = line;
                             break;
@@ -529,7 +529,7 @@ class Line
                     }
                 }
             }
-            return tags.size() == 0;
+            return tags.isEmpty();
         }
         return false;
     }

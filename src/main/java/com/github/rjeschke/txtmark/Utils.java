@@ -28,7 +28,7 @@ class Utils
     }
     
     /** Random number generator value. */
-    private static int RND = (int)System.nanoTime();
+    private static int rndValue = (int)System.nanoTime();
 
     /**
      * LCG random number generator.
@@ -37,7 +37,7 @@ class Utils
      */
     public final static int rnd()
     {
-        return (RND = RND * 1664525 + 1013904223) >>> 22;
+        return (rndValue = rndValue * 1664525 + 1013904223) >>> 22;
     }
 
     /**

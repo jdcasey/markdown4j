@@ -865,7 +865,7 @@ class Emitter
                         return MarkToken.X_COPY;
                     if(c1 == 'R' && c2 == ')')
                         return MarkToken.X_REG;
-                    if(c1 == 'T' & c2 == 'M' & c3 == ')')
+                    if(c1 == 'T' && c2 == 'M' && c3 == ')')
                         return MarkToken.X_TRADE;
                     break;
                 case '"':

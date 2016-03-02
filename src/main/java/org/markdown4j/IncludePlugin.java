@@ -10,6 +10,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -96,10 +97,10 @@ public class IncludePlugin extends Plugin {
 
     public static String getCharsetFromContent(URL url) throws IOException {
         InputStream stream = url.openStream();
-        byte chunk[] = new byte[2048];
+        byte[] chunk = new byte[2048];
         int bytesRead = stream.read(chunk);
         if (bytesRead > 0) {
-            String startContent = new String(chunk);
+            String startContent = new String(chunk, StandardCharsets.UTF_8);
             String pattern = "\\<meta\\s*http-equiv=[\\\"\\']content-type[\\\"\\']\\s*content\\s*=\\s*[\"']text/html\\s*;\\s*charset=([a-z\\d\\-]*)[\\\"\\'\\>]";
             Matcher matcher = Pattern.compile(pattern,  Pattern.CASE_INSENSITIVE).matcher(startContent);
             if (matcher.find()) {

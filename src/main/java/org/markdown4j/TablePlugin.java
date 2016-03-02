@@ -23,11 +23,11 @@ public class TablePlugin extends Plugin {
 	@Override
 	public void emit(StringBuilder out, List<String> lines,
 			Map<String, String> params) {
-		StringBuilder sb2 = new StringBuilder();
-		String lparams = null;
+		StringBuffer sb2;
+		String lparams;
 		int ioh = findSeparatorLine(0, lines);
-		String headerLine = null;
-		String footerLine = null;
+		String headerLine;
+		String footerLine;
 		if(ioh != -1) {
 			headerLine = lines.get(ioh);
 			int iof = findSeparatorLine(ioh, lines);

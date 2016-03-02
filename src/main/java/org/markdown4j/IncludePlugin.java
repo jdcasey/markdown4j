@@ -56,7 +56,7 @@ public class IncludePlugin extends Plugin {
 		BufferedReader br = new BufferedReader(isr);
 		StringWriter sw = new StringWriter();
 		BufferedWriter bw = new BufferedWriter(sw);
-		String line = null;
+		String line;
 		while((line = br.readLine()) != null) {
 		    bw.write(line);
 		    bw.newLine();

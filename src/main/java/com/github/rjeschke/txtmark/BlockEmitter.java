@@ -69,5 +69,5 @@ public interface BlockEmitter
      * @param meta
      *            Meta information as a single String (if any) or empty String
      */
-    public void emitBlock(StringBuilder out, List<String> lines, String meta);
+    void emitBlock(StringBuilder out, List<String> lines, String meta);
 }

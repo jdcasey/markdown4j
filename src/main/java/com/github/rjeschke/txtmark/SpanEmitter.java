@@ -31,5 +31,5 @@ public interface SpanEmitter
      * @param content
      *            The span's content.
      */
-    public void emitSpan(StringBuilder out, String content);
+    void emitSpan(StringBuilder out, String content);
 }

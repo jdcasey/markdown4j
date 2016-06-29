@@ -57,7 +57,7 @@ import com.github.rjeschke.txtmark.Processor;
 public class MarkdownTestTester
 {
 
-    private final static String MARKDOWN_TEST_DIR = "/MarkdownTest";
+    private static final String MARKDOWN_TEST_DIR = "/MarkdownTest";
 
     String test;
 

@@ -58,7 +58,7 @@ import com.github.rjeschke.txtmark.Processor;
 public class MarkupFileTester
 {
 
-    private final static String[] TEST_FILENAMES = new String[] { "/dingus.txt", "/paragraphs.txt", "/snippets.txt", "/lists.txt" };
+    private static final String[] TEST_FILENAMES = new String[] { "/dingus.txt", "/paragraphs.txt", "/snippets.txt", "/lists.txt" };
 
     TestResultPair pair;
 

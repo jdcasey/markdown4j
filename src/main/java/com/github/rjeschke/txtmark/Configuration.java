@@ -57,7 +57,7 @@ public class Configuration
      * <li><code>codeBlockEmitter = null</code></li>
      * </ul>
      */
-    public final static Configuration DEFAULT = Configuration.builder()
+    public static final Configuration DEFAULT = Configuration.builder()
                                                              .build();
 
     /**
@@ -72,7 +72,7 @@ public class Configuration
      * <li><code>codeBlockEmitter = null</code></li>
      * </ul>
      */
-    public final static Configuration DEFAULT_SAFE = Configuration.builder()
+    public static final Configuration DEFAULT_SAFE = Configuration.builder()
                                                                   .enableSafeMode()
                                                                   .build();
 

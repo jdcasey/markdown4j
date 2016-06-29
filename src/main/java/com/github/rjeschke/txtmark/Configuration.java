@@ -115,19 +115,19 @@ public class Configuration
      */
     public static class Builder
     {
-        private boolean safeMode = false;
+        private boolean safeMode;
 
         private boolean forceExtendedProfile = true;
 
-        private boolean convertNewline2Br = false;
+        private boolean convertNewline2Br;
 
         private String encoding = "UTF-8";
 
         private Decorator decorator = new DefaultDecorator();
 
-        private BlockEmitter codeBlockEmitter = null;
+        private BlockEmitter codeBlockEmitter;
 
-        private SpanEmitter specialLinkEmitter = null;
+        private SpanEmitter specialLinkEmitter;
 
         private final List<Plugin> plugins = new ArrayList<>();
 

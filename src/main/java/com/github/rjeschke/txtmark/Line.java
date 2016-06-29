@@ -31,13 +31,13 @@ class Line
     /** Current cursor position. */
     public int pos;
     /** Leading and trailing spaces. */
-    public int leading = 0, trailing = 0;
+    public int leading, trailing;
     /** Is this line empty? */
     public boolean isEmpty = true;
     /** This line's value. */
-    public String value = null;
+    public String value;
     /** Previous and next line. */
-    public Line previous = null, next = null;
+    public Line previous, next;
     /** Is previous/next line empty? */
     public boolean prevEmpty, nextEmpty;
     /** Final line of a XML block. */

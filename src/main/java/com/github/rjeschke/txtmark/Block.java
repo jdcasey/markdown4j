@@ -25,15 +25,15 @@ class Block
     /** This block's type. */
     public BlockType type = BlockType.NONE;
     /** Head and tail of linked lines. */
-    public Line lines = null, lineTail = null;
+    public Line lines, lineTail;
     /** Head and tail of child blocks. */
-    public Block blocks = null, blockTail = null;
+    public Block blocks, blockTail;
     /** Next block. */
-    public Block next = null;
+    public Block next;
     /** Depth of headline BlockType. */
-    public int hlDepth = 0;
+    public int hlDepth;
     /** ID for headlines and list items */
-    public String id = null;
+    public String id;
     /** Block meta information */
     public String meta = "";
 

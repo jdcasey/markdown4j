@@ -36,9 +36,9 @@ class Emitter
     /** The configuration. */
     private final Configuration config;
     /** Extension flag. */
-    public boolean useExtensions = false;
+    public boolean useExtensions;
     /** Newline flag. */
-    public boolean convertNewline2Br = false;
+    public boolean convertNewline2Br;
     /** Plugins references **/
 	private Map<String, Plugin> plugins = new HashMap<>();
     

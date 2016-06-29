@@ -50,7 +50,7 @@ public class Processor
     final Configuration config;
 
     /** Extension flag. */
-    private boolean useExtensions = false;
+    private boolean useExtensions;
 
     /**
      * Constructor.

@@ -26,7 +26,7 @@ import java.util.HashSet;
 class HTML
 {
     /** List of valid HTML/XML entity names. */
-    private final static String[] ENTITY_NAMES = {
+    private static final String[] ENTITY_NAMES = {
         "&Acirc;", "&acirc;", "&acute;", "&AElig;", "&aelig;", "&Agrave;", "&agrave;", "&alefsym;", 
         "&Alpha;", "&alpha;", "&amp;", "&and;", "&ang;", "&apos;", "&Aring;", "&aring;", 
         "&asymp;", "&Atilde;", "&atilde;", "&Auml;", "&auml;", "&bdquo;", "&Beta;", "&beta;", 
@@ -61,7 +61,7 @@ class HTML
         "&zwj;", "&zwnj;"
     };
     /** Characters corresponding to ENTITY_NAMES. */
-    private final static char[] ENTITY_CHARS = {
+    private static final char[] ENTITY_CHARS = {
         '\u00C2', '\u00E2', '\u00B4', '\u00C6', '\u00E6', '\u00C0', '\u00E0', '\u2135', 
         '\u0391', '\u03B1', '\u0026', '\u2227', '\u2220', '\'', '\u00C5', '\u00E5', 
         '\u2248', '\u00C3', '\u00E3', '\u00C4', '\u00E4', '\u201E', '\u0392', '\u03B2', 
@@ -96,13 +96,13 @@ class HTML
         '\u200D', '\u200C'
     };
     /** Valid markdown link prefixes for auto links. */
-    private final static String[] LINK_PREFIXES = {
+    private static final String[] LINK_PREFIXES = {
         "http", "https", 
         "ftp", "ftps"
     };
 
     /** HTML block level elements. */
-    private final static HTMLElement[] BLOCK_ELEMENTS = {
+    private static final HTMLElement[] BLOCK_ELEMENTS = {
         HTMLElement.address,
         HTMLElement.blockquote,
         HTMLElement.del, HTMLElement.div, HTMLElement.dl,
@@ -117,7 +117,7 @@ class HTML
     };
 
     /** HTML unsafe elements. */
-    private final static HTMLElement[] UNSAFE_ELEMENTS = {
+    private static final HTMLElement[] UNSAFE_ELEMENTS = {
         HTMLElement.applet,
         HTMLElement.head,
         HTMLElement.html,
@@ -130,17 +130,17 @@ class HTML
     };
     
     /** Character to entity encoding map. */
-    private final static HashMap<Character, String> encodeMap = new HashMap<>();
+    private static final HashMap<Character, String> encodeMap = new HashMap<>();
     /** Entity to character decoding map. */
-    private final static HashMap<String, Character> decodeMap = new HashMap<>();
+    private static final HashMap<String, Character> decodeMap = new HashMap<>();
     /** Set of valid HTML tags. */
-    private final static HashSet<String> HTML_ELEMENTS = new HashSet<>();
+    private static final HashSet<String> HTML_ELEMENTS = new HashSet<>();
     /** Set of unsafe HTML tags. */
-    private final static HashSet<String> HTML_UNSAFE = new HashSet<>();
+    private static final HashSet<String> HTML_UNSAFE = new HashSet<>();
     /** Set of HTML block level tags. */
-    private final static HashSet<String> HTML_BLOCK_ELEMENTS = new HashSet<>();
+    private static final HashSet<String> HTML_BLOCK_ELEMENTS = new HashSet<>();
     /** Set of valid markdown link prefixes. */
-    private final static HashSet<String> LINK_PREFIX = new HashSet<>();
+    private static final HashSet<String> LINK_PREFIX = new HashSet<>();
 
     static
     {
@@ -177,7 +177,7 @@ class HTML
      * @param value String to check.
      * @return Returns <code>true</code> if the given String is a link prefix.
      */
-    public final static boolean isLinkPrefix(final String value)
+    public static final boolean isLinkPrefix(final String value)
     {
         return LINK_PREFIX.contains(value);
     }
@@ -186,7 +186,7 @@ class HTML
      * @param value String to check.
      * @return Returns <code>true</code> if the given String is an entity.
      */
-    public final static boolean isEntity(final String value)
+    public static final boolean isEntity(final String value)
     {
         return decodeMap.containsKey(value);
     }
@@ -195,7 +195,7 @@ class HTML
      * @param value String to check.
      * @return Returns <code>true</code> if the given String is a HTML tag.
      */
-    public final static boolean isHtmlElement(final String value)
+    public static final boolean isHtmlElement(final String value)
     {
         return HTML_ELEMENTS.contains(value);
     }
@@ -204,7 +204,7 @@ class HTML
      * @param value String to check.
      * @return Returns <code>true</code> if the given String is a HTML block level tag.
      */
-    public final static boolean isHtmlBlockElement(final String value)
+    public static final boolean isHtmlBlockElement(final String value)
     {
         return HTML_BLOCK_ELEMENTS.contains(value);
     }
@@ -213,7 +213,7 @@ class HTML
      * @param value String to check.
      * @return Returns <code>true</code> if the given String is an unsafe HTML tag.
      */
-    public final static boolean isUnsafeHtmlElement(final String value)
+    public static final boolean isUnsafeHtmlElement(final String value)
     {
         return HTML_UNSAFE.contains(value);
     }

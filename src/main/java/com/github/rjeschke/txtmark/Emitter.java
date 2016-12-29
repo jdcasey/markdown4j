@@ -18,6 +18,7 @@ package com.github.rjeschke.txtmark;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -193,6 +194,9 @@ class Emitter
         case FENCED_CODE:
             this.emitCodeLines(out, block.lines, block.meta, false);
             break;
+        case TABLE:
+            this.emitTableLines(out, block.lines, block.meta);
+            break;
         case PLUGIN:
             this.emitPluginLines(out, block.lines, block.meta);
             break;
@@ -208,7 +212,59 @@ class Emitter
         }
     }
 
-    /**
+    private void emitTableLines(StringBuilder out, Line lines, String meta) {
+//    	Map<Integer,String> alignment = new HashMap<Integer, String>();  
+//		StringBuilder myst = new StringBuilder();
+//		myst.append("<table width=\"100%\">");
+//		boolean first = true;
+//		do{
+//			String lineValue = lines.value;
+//			myst.append("<tr>");
+//			String[] split = lineValue.split("\\|");
+//			Integer count = 0;
+//			for (String string2 : split) {
+//				if(string2.isEmpty()) continue;
+//				count ++;
+//				if(string2.trim().matches("\\:.*\\:")){
+//					alignment.put(count, "center"); continue;
+//				}else if(string2.trim().matches(".*\\:")){
+//					alignment.put(count, "right"); continue;
+//				}else if(string2.trim().matches("\\:.*")){
+//					alignment.put(count, "left"); continue;
+//				}				
+//				myst.append(first?"<th calm=\""+count+"\">":"<td calm=\""+count+"\">");
+//				myst.append(string2);
+//				myst.append(first?"</th>":"</td>");
+//				
+//			}
+//			myst.append("</tr>");
+//			first = false;
+//			lines = lines.next;
+//		}while(lines != null && lines.value != null && !lines.value.isEmpty());
+//		myst.append("</table>");
+//		String string = myst.toString();
+//		Set<Integer> keySet = alignment.keySet();
+//		for (Integer integer : keySet) {
+//			string = string.replaceAll("calm=\""+integer+"\"", "style=\"text-align:"+alignment.get(integer)+"\"");
+//		}
+//		out.append(string);		
+    	 Line line = lines;
+         if(this.config.codeBlockEmitter != null)
+         {
+             final ArrayList<String> list = new ArrayList<>();
+             while(line != null)
+             {
+                 if(line.isEmpty)
+                     list.add("");
+                 else
+                     list.add(line.value);
+                 line = line.next;
+             }
+             this.config.tableBlockEmitter.emitBlock(out, list, meta);
+         }
+	}
+
+	/**
      * Finds the position of the given Token in the given String.
      * 
      * @param in

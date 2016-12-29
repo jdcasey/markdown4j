@@ -21,7 +21,7 @@ public class Markdown4jProcessor {
 	
 	private Builder builder() {
 		decorator = new ExtDecorator();
-		return Configuration.builder().forceExtentedProfile().registerPlugins(new YumlPlugin(), new WebSequencePlugin(), new IncludePlugin()).convertNewline2Br().setDecorator(decorator).setCodeBlockEmitter(new CodeBlockEmitter());
+		return Configuration.builder().forceExtentedProfile().registerPlugins(new YumlPlugin(), new WebSequencePlugin(), new IncludePlugin()).convertNewline2Br().setDecorator(decorator).setCodeBlockEmitter(new CodeBlockEmitter()).setTableBlockEmitter(new TableBlockEmitter());
 	}
 	public Markdown4jProcessor registerPlugins(Plugin ... plugins) {
 		builder.registerPlugins(plugins);

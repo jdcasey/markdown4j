@@ -1,11 +1,3 @@
-# Test Table as Plugin
-%%% table
-| HEADER 1 | HEADER 2 | HEADER 3 |
-| :---     |  :---:   |     ---: |
-|content 1 | content 2|content 3 |
-%%%
-
-#Test Table as native TABLE type
 | HEADER 1 | HEADER 2 | HEADER 3 |
 | :---     |  :---:   |     ---: |
 |content 1 | content 2|content 3 |

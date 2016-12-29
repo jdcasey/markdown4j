@@ -7,6 +7,10 @@ import java.util.Set;
 
 import com.github.rjeschke.txtmark.BlockEmitter;
 
+/**
+ * @author https://github.com/piergiuseppe82
+ *
+ */
 public class TableBlockEmitter implements BlockEmitter{
 
 	@Override

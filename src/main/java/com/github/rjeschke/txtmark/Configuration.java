@@ -35,6 +35,8 @@ public class Configuration
     final Decorator decorator;
 
     final BlockEmitter codeBlockEmitter;
+    
+    final BlockEmitter tableBlockEmitter;
 
     final boolean forceExtendedProfile;
 
@@ -82,15 +84,17 @@ public class Configuration
      * @param safeMode
      * @param encoding
      * @param decorator
+     * @param tableBlockEmitter 
      */
     Configuration( final boolean safeMode, final String encoding, final Decorator decorator, final BlockEmitter codeBlockEmitter,
-                   final boolean forceExtendedProfile, final boolean convertNewline2Br, final SpanEmitter specialLinkEmitter,
+                   final BlockEmitter tableBlockEmitter, final boolean forceExtendedProfile, final boolean convertNewline2Br, final SpanEmitter specialLinkEmitter,
                    final List<Plugin> plugins )
     {
         this.safeMode = safeMode;
         this.encoding = encoding;
         this.decorator = decorator;
         this.codeBlockEmitter = codeBlockEmitter;
+        this.tableBlockEmitter = tableBlockEmitter;
         this.convertNewline2Br = convertNewline2Br;
         this.forceExtendedProfile = forceExtendedProfile;
         this.specialLinkEmitter = specialLinkEmitter;
@@ -126,6 +130,8 @@ public class Configuration
         private Decorator decorator = new DefaultDecorator();
 
         private BlockEmitter codeBlockEmitter = null;
+        
+        private BlockEmitter tableBlockEmitter = null;
 
         private SpanEmitter specialLinkEmitter = null;
 
@@ -281,7 +287,7 @@ public class Configuration
          */
         public Configuration build()
         {
-            return new Configuration( this.safeMode, this.encoding, this.decorator, this.codeBlockEmitter, this.forceExtendedProfile,
+            return new Configuration( this.safeMode, this.encoding, this.decorator, this.codeBlockEmitter,this.tableBlockEmitter, this.forceExtendedProfile,
                                       this.convertNewline2Br, this.specialLinkEmitter, this.plugins );
         }
 
@@ -289,5 +295,11 @@ public class Configuration
         {
             return decorator;
         }
+
+        
+		public Builder setTableBlockEmitter(BlockEmitter tableBlockEmitter) {
+			this.tableBlockEmitter = tableBlockEmitter;
+			return this;
+		}
     }
 }

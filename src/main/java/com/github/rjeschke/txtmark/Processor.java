@@ -888,7 +888,7 @@ public class Processor
                         {
                             break;
                         }
-                        if ( this.useExtensions && ( t == LineType.CODE || t == LineType.FENCED_CODE || t == LineType.PLUGIN ) )
+                        if ( this.useExtensions && ( t == LineType.CODE || t == LineType.FENCED_CODE || t == LineType.PLUGIN || t == LineType.TABLE ) )
                         {
                             break;
                         }
@@ -1010,6 +1010,26 @@ public class Processor
                     {
                         block.lineTail.setEmpty();
                     }
+                    block.removeSurroundingEmptyLines();
+                    break;
+                case TABLE:
+                    while ( line != null )
+                    {
+                        if ( line.getLineType( this.useExtensions ) == LineType.TABLE )
+                        {
+                        	line = line.next;
+                        }else{
+                        	break;
+                        }
+                        
+                    }
+                    if ( line != null )
+                    {
+                        line = line.next;
+                    }
+                    block = root.split( line != null ? line.previous : root.lineTail );
+                    block.type = BlockType.TABLE;
+                    block.meta = "table";
                     block.removeSurroundingEmptyLines();
                     break;
                 case HEADLINE:

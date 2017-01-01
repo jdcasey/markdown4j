@@ -81,6 +81,7 @@ class Emitter
      */
     public void emit(final StringBuilder out, final Block root)
     {
+    	
         root.removeSurroundingEmptyLines();
 
         switch(root.type)
@@ -1005,6 +1006,10 @@ class Emitter
      */
     private void emitCodeLines(final StringBuilder out, final Line lines, final String meta, final boolean removeIndent)
     {
+    	if(existPlugin(out,lines,meta)){
+    		emitPluginLines(out, lines, meta);
+    		return;
+    	}
         Line line = lines;
         if(this.config.codeBlockEmitter != null)
         {
@@ -1050,7 +1055,12 @@ class Emitter
             }
         }
     }
-    /**
+    
+    private boolean existPlugin(StringBuilder out, Line lines, String meta) {
+    	return plugins.get(meta)!= null;
+    }
+
+	/**
      * interprets a plugin block into the StringBuilder.
      * 
      * @param out

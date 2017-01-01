@@ -1103,7 +1103,16 @@ public class Processor
         final StringBuilder out = new StringBuilder();
         final Block parent = this.readLines();
         parent.removeSurroundingEmptyLines();
-
+        //out.append("<html>");
+        this.config.decorator.openHtml(out);
+        //out.append("<head>");
+        this.config.decorator.openHtmlHeaders(out);
+        //out.append("<style type=\"text/css\">body{font-size: 12px;font-family: sans-serif;}table{width:100%;}th{background-color: silver;}table{border: 1px solid;}pre{background-color: silver;font-family: monospace;}</style>");
+        this.config.decorator.writeDefaultInternalStyle(out);
+        //out.append("</head>");
+        this.config.decorator.closeHtmlHeaders(out);
+//        out.append("<body>");
+        this.config.decorator.openBody(out);
         this.recurse( parent, false );
         Block block = parent.blocks;
         while ( block != null )
@@ -1111,7 +1120,10 @@ public class Processor
             this.emitter.emit( out, block );
             block = block.next;
         }
-
+//        out.append("</body>");
+        this.config.decorator.closeBody(out);
+//        out.append("</html>");
+        this.config.decorator.closeHtml(out);
         return out.toString();
     }
 }

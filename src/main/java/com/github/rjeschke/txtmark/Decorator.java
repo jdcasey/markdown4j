@@ -467,4 +467,115 @@ public interface Decorator
      *            The StringBuilder to write to.
      */
     public void openImage(final StringBuilder out);
+
+    /**
+     * Called when new Html rendering  started.
+     * 
+     * <p>
+     * <strong>Note:</strong> Don't close the HTML tag!
+     * </p>
+     * <p>
+     * Default implementation is:
+     * </p>
+     * 
+     * <pre>
+     * <code>out.append("&lt;html>");</code>
+     * </pre>
+     * 
+     * @param out
+     *            The StringBuilder to write to.
+     */
+	public void openHtml(StringBuilder out);
+
+	/**
+     * Called when new Html rendering  started and after HTML tag.
+     * 
+     * <p>
+     * <strong>Note:</strong> Don't close the HTML tag!
+     * </p>
+     * <p>
+     * Default implementation is:
+     * </p>
+     * 
+     * <pre>
+     * <code>out.append("&lt;head>");</code>
+     * </pre>
+     * 
+     * @param out
+     *            The StringBuilder to write to.
+     */
+	public void openHtmlHeaders(StringBuilder out);
+
+	
+	/**
+     * Called when new Html rendering  started and write default internal style beetwen html headers tag.
+     *  
+     * @param out
+     *            The StringBuilder to write to.
+     */
+	public void writeDefaultInternalStyle(StringBuilder out);
+
+	/**
+     * Called when new Html rendering  started and before Body tag.
+     * 
+     * <p>
+     * <strong>Note:</strong> Don't open the HTML tag!
+     * </p>
+     * <p>
+     * Default implementation is:
+     * </p>
+     * 
+     * <pre>
+     * <code>out.append("&lt;/head>");</code>
+     * </pre>
+     * 
+     * @param out
+     *            The StringBuilder to write to.
+     */
+	public void closeHtmlHeaders(StringBuilder out);
+
+	/**
+     * Called when new Html rendering  started and before process html's block.
+     * 
+     * Default implementation is:
+     * </p>
+     * 
+     * <pre>
+     * <code>out.append("&lt;body>");</code>
+     * </pre>
+     * 
+     * @param out
+     *            The StringBuilder to write to.
+     */
+	public void openBody(StringBuilder out);
+
+	/**
+     * Called after process html's block.
+     * 
+     * Default implementation is:
+     * </p>
+     * 
+     * <pre>
+     * <code>out.append("&lt;/body>");</code>
+     * </pre>
+     * 
+     * @param out
+     *            The StringBuilder to write to.
+     */
+	public void closeBody(StringBuilder out);
+
+	/**
+     * Called when all blocks is processed and before return html document.
+     * 
+     * Default implementation is:
+     * </p>
+     * 
+     * <pre>
+     * <code>out.append("&lt;/html>");</code>
+     * </pre>
+     * 
+     * @param out
+     *            The StringBuilder to write to.
+     */
+	public void closeHtml(StringBuilder out);
 }

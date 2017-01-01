@@ -38,7 +38,9 @@ package com.github.rjeschke.txtmark;
  */
 public class DefaultDecorator implements Decorator
 {
-    /** Constructor. */
+    private static final String DEFAULT_INTERNAL_STYLE = "<style type=\"text/css\">body{font-size: 12px;font-family: sans-serif;}table{width:100%;}th{background-color: silver;}table{border: 1px solid;}pre{background-color: silver;font-family: monospace;}</style>";
+
+	/** Constructor. */
     public DefaultDecorator()
     {
         // empty
@@ -241,4 +243,41 @@ public class DefaultDecorator implements Decorator
     {
         out.append("<img");
     }
+
+	@Override
+	public void openHtml(StringBuilder out) {
+		 out.append("<html>\n");
+		
+	}
+
+	@Override
+	public void openHtmlHeaders(StringBuilder out) {
+		out.append("<head>\n");
+		
+	}
+
+	@Override
+	public void writeDefaultInternalStyle(StringBuilder out) {
+		out.append(DEFAULT_INTERNAL_STYLE+"\n");		
+	}
+
+	@Override
+	public void closeHtmlHeaders(StringBuilder out) {
+		out.append("</head>\n");			
+	}
+
+	@Override
+	public void openBody(StringBuilder out) {
+		out.append("<body>\n");				
+	}
+
+	@Override
+	public void closeBody(StringBuilder out) {
+		out.append("</body>\n");			
+	}
+
+	@Override
+	public void closeHtml(StringBuilder out) {
+		out.append("</html>");			
+	}
 }

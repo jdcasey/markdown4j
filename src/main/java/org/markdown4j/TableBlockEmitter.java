@@ -17,7 +17,7 @@ public class TableBlockEmitter implements BlockEmitter{
 	public void emitBlock(StringBuilder out, List<String> lines, String meta) {
 		Map<Integer,String> alignment = new HashMap<Integer, String>();  
 		StringBuilder myst = new StringBuilder();
-		myst.append("<table width=\"100%\">");
+		myst.append("<table>");
 		boolean first = true;
 		for (String string : lines) {
 			myst.append("<tr>");
@@ -41,7 +41,7 @@ public class TableBlockEmitter implements BlockEmitter{
 			myst.append("</tr>");
 			first = false;
 		}
-		myst.append("</table>");
+		myst.append("</table>\n");
 		String string = myst.toString();
 		Set<Integer> keySet = alignment.keySet();
 		for (Integer integer : keySet) {

@@ -1,0 +1,8 @@
+``` properties
+# --- ConsoleHandler ---
+# Override of global logging level
+
+
+java.util.logging.ConsoleHandler.level=FINE
+java.util.logging.ConsoleHandler.formatter=java.util.logging.SimpleFormatter
+```

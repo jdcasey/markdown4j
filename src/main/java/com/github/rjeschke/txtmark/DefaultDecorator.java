@@ -246,7 +246,7 @@ public class DefaultDecorator implements Decorator
 
 	@Override
 	public void openHtml(StringBuilder out) {
-		 out.append("<html>\n");
+		 out.append("<!DOCTYPE html>\n<html>\n");
 		
 	}
 

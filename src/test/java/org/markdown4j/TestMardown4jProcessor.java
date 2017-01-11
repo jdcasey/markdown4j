@@ -49,5 +49,15 @@ public class TestMardown4jProcessor {
 		String process = markdown4jProcessor.process(file);
 		System.out.println(process);
 	}
+	
+	@Test
+	public void testSQLCode() throws IOException {
+		Markdown4jProcessor markdown4jProcessor = new Markdown4jProcessor();
+		markdown4jProcessor = markdown4jProcessor.registerPlugins(new SqlCodePlugin());
+		URL fileUrl = MarkupFileTester.class.getResource( "/sqlPlugin.txt" );
+        FileReader file = new FileReader( fileUrl.getFile() );
+		String process = markdown4jProcessor.process(file);
+		System.out.println(process);
+	}
 
 }

@@ -2,7 +2,10 @@ package org.markdown4j;
 
 import java.util.List;
 import java.util.Map;
-
+/**
+ * @author https://github.com/piergiuseppe82
+ *
+ */
 public class PropertiesCodePlugin extends Plugin {
 
 	public PropertiesCodePlugin() {

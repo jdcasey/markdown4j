@@ -98,18 +98,18 @@ public class SqlCodePlugin extends Plugin {
 				String newStr = "";
 			 	if(string.trim().startsWith("--") || string.trim().startsWith("#")){
 			 		//IS COMMENT
-			 		newStr = "<span style=\"color:green;margin:0;padding:0;\">"+string+"</span>";
+			 		newStr = "<span style=\"color:green;margin:0;padding:0;\">"+replaceHtmlSpecial(string)+"</span>";
 			 	}else if(string.trim().startsWith("/*")){
 			 		//IS COMMENT
 			 		comment = true;
-			 		newStr = "<span style=\"color:green;margin:0;padding:0;\">"+string+"</span>";
+			 		newStr = "<span style=\"color:green;margin:0;padding:0;\">"+replaceHtmlSpecial(string)+"</span>";
 			 	}else if(string.trim().endsWith("*/")){
 			 		//IS COMMENT
 			 		comment = false;
-			 		newStr = "<span style=\"color:green;margin:0;padding:0;\">"+string+"</span>";
+			 		newStr = "<span style=\"color:green;margin:0;padding:0;\">"+replaceHtmlSpecial(string)+"</span>";
 			 	}else if(comment){
 			 		//IS COMMENT
-			 		newStr = "<span style=\"color:green;margin:0;padding:0;\">"+string+"</span>";
+			 		newStr = "<span style=\"color:green;margin:0;padding:0;\">"+replaceHtmlSpecial(string)+"</span>";
 			 	}else{
 			 		char[] charArray = string.toCharArray();
 			 		String word = "";
@@ -122,26 +122,26 @@ public class SqlCodePlugin extends Plugin {
 			 			}else if(c == '\'' && isString && !isInlineComment){
 				 				isString = false;
 				 				word = word +c;	
-				 				newStr = newStr + "<span style=\"color:magenta;margin:0;padding:0;\">"+word+"</span>";	
+				 				newStr = newStr + "<span style=\"color:magenta;margin:0;padding:0;\">"+replaceHtmlSpecial(word)+"</span>";	
 				 				word = "";
 			 			}else if(!isInlineComment && !isString && (separator.contains(""+c))){	
 			 				for (String keyword : keywords) {
 								if(word.toUpperCase().matches(keyword)){
 									//IS KEYWORD
-									word = word.toUpperCase().replaceAll(keyword, "<span style=\"color:red;margin:0;padding:0;\">"+keyword+"</span>");
+									word = word.toUpperCase().replaceAll(keyword, "<span style=\"color:red;margin:0;padding:0;\">"+replaceHtmlSpecial(keyword)+"</span>");
 									newStr = newStr + word;
 									word = "";
 								}																	
 							}	
 			 				if(word.toUpperCase().matches("\\d+\\.\\d+")){
 					 			//IS DECIMAL
-								word = word.toUpperCase().replaceAll("\\d+\\.\\d+", "<span style=\"color:blue;margin:0;padding:0;\">"+word+"</span>");
+								word = word.toUpperCase().replaceAll("\\d+\\.\\d+", "<span style=\"color:blue;margin:0;padding:0;\">"+replaceHtmlSpecial(word)+"</span>");
 								newStr = newStr + word;	
 								word = "";
 							}
 					 		if(word.toUpperCase().matches("\\d+")){
 					 			//IS INTEGER
-								word = word.toUpperCase().replaceAll("\\d+", "<span style=\"color:blue;margin:0;padding:0;\">"+word+"</span>");
+								word = word.toUpperCase().replaceAll("\\d+", "<span style=\"color:blue;margin:0;padding:0;\">"+replaceHtmlSpecial(word)+"</span>");
 								newStr = newStr + word;	
 								word = "";
 							}					 		
@@ -168,26 +168,26 @@ public class SqlCodePlugin extends Plugin {
 			 		if(!word.isEmpty()){
 			 			if(isInlineComment){
 			 				//IS COMMENT
-			 				newStr = newStr + "<span style=\"color:green;margin:0;padding:0;\">"+word+"</span>";
+			 				newStr = newStr + "<span style=\"color:green;margin:0;padding:0;\">"+replaceHtmlSpecial(word)+"</span>";
 			 				word = "";
 			 			}else{
 			 				//IS KEYWORD
 			 				for (String keyword : keywords) {
 								if(word.toUpperCase().matches(keyword)){
-									word = word.toUpperCase().replaceAll(keyword, "<span style=\"color:red;margin:0;padding:0;\">"+keyword+"</span>");
+									word = word.toUpperCase().replaceAll(keyword, "<span style=\"color:red;margin:0;padding:0;\">"+replaceHtmlSpecial(keyword)+"</span>");
 									newStr = newStr + word;
 									word = "";
 								}																
 							}
 			 				if(word.toUpperCase().matches("\\d+\\.\\d+")){
 					 			//IS DECIMAL
-								word = word.toUpperCase().replaceAll("\\d+\\.\\d+", "<span style=\"color:blue;margin:0;padding:0;\">"+word+"</span>");
+								word = word.toUpperCase().replaceAll("\\d+\\.\\d+", "<span style=\"color:blue;margin:0;padding:0;\">"+replaceHtmlSpecial(word)+"</span>");
 								newStr = newStr + word;	
 								word = "";
 							}
 					 		if(word.toUpperCase().matches("\\d+")){
 					 			//IS INTEGER
-								word = word.toUpperCase().replaceAll("\\d+", "<span style=\"color:blue;margin:0;padding:0;\">"+word+"</span>");
+								word = word.toUpperCase().replaceAll("\\d+", "<span style=\"color:blue;margin:0;padding:0;\">"+replaceHtmlSpecial(word)+"</span>");
 								newStr = newStr + word;	
 								word = "";
 							}
@@ -203,6 +203,13 @@ public class SqlCodePlugin extends Plugin {
 		}
 		myst.append("</div>\n");
 		out.append(myst.toString());
+	}
+
+	private String replaceHtmlSpecial(String string) {
+		if(string == null) return string;
+		
+		return string.replaceAll("<", "&#060;")
+				.replaceAll(">", "&#062;");
 	}
 
 }

@@ -684,7 +684,7 @@ class Emitter
                 }
                 else
                 {
-                    out.append("&lt;");
+                    out.append("&#060;");
                 }
                 break;
             case ENTITY:
@@ -697,7 +697,7 @@ class Emitter
                 }
                 else
                 {
-                    out.append("&amp;");
+                    out.append("&#038;");
                 }
                 break;
             case X_LINK_OPEN:
@@ -714,42 +714,42 @@ class Emitter
                 }
                 break;
             case X_COPY:
-                out.append("&copy;");
+                out.append("&#169;");
                 pos += 2;
                 break;
             case X_REG:
-                out.append("&reg;");
+                out.append("&#174;");
                 pos += 2;
                 break;
             case X_TRADE:
-                out.append("&trade;");
+                out.append("&#8482;");
                 pos += 3;
                 break;
             case X_NDASH:
-                out.append("&ndash;");
+                out.append("&#8211;");
                 pos++;
                 break;
             case X_MDASH:
-                out.append("&mdash;");
+                out.append("&#8212;");
                 pos += 2;
                 break;
             case X_HELLIP:
-                out.append("&hellip;");
+                out.append("&#133;");
                 pos += 2;
                 break;
             case X_LAQUO:
-                out.append("&laquo;");
+                out.append("&#171;");
                 pos++;
                 break;
             case X_RAQUO:
-                out.append("&raquo;");
+                out.append("&#187;");
                 pos++;
                 break;
             case X_RDQUO:
-                out.append("&rdquo;");
+                out.append("&#8221;");
                 break;
             case X_LDQUO:
-                out.append("&ldquo;");
+                out.append("&#8220;");
                 break;
             case ESCAPE:
                 pos++;

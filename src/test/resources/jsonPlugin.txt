@@ -1,0 +1,16 @@
+``` json
+
+[
+	{
+		"idProdotto" : 348,
+		"listaUtenti":["S*","s*"],
+		"listaUtenti":true,"listaUtenti":null
+	},
+	{
+		"idProdotto" : 9999999999,
+		"listaUtenti":["UTENTE1","UTENTE2","AA*"]
+	}	
+]
+
+```
+

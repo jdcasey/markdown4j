@@ -38,7 +38,7 @@ package com.github.rjeschke.txtmark;
  */
 public class DefaultDecorator implements Decorator
 {
-    private static final String DEFAULT_INTERNAL_STYLE = "<style type=\"text/css\">body{font-size: 12px;font-family: sans-serif;}table{width:100%;}th{background-color: silver;}table{border: 1px solid;}pre{background-color: silver;font-family: monospace;}</style>";
+    private static final String DEFAULT_INTERNAL_STYLE = "<meta charset=\"UTF-8\"></meta><style type=\"text/css\">body{font-size: 12px;font-family: sans-serif;}table{width:100%;}th{background-color: silver;}table{border: 1px solid;}pre{background-color: silver;font-family: monospace;}</style>";
 
 	/** Constructor. */
     public DefaultDecorator()

@@ -16,7 +16,7 @@ import com.github.rjeschke.txtmark.test.MarkupFileTester;
 public class TestMardown4jProcessor {
 	
 	private static final String expected = 
-			"<!DOCTYPE html>\n<html>\n<head>\n<style type=\"text/css\">body{font-size: 12px;font-family: sans-serif;}table{width:100%;}th{background-color: silver;}table{border: 1px solid;}pre{background-color: silver;font-family: monospace;}</style>\n</head>\n<body>\n<table><tr><th style=\"text-align:left\"> HEADER 1 </th><th style=\"text-align:center\"> HEADER 2 </th><th style=\"text-align:right\"> HEADER 3 </th></tr><tr></tr><tr><td style=\"text-align:left\">content 1 </td><td style=\"text-align:center\"> content 2</td><td style=\"text-align:right\">content 3 </td></tr></table>\n</body>\n</html>";
+			"<!DOCTYPE html>\n<html>\n<head>\n<meta charset=\"UTF-8\"></meta><style type=\"text/css\">body{font-size: 12px;font-family: sans-serif;}table{width:100%;}th{background-color: silver;}table{border: 1px solid;}pre{background-color: silver;font-family: monospace;}</style>\n</head>\n<body>\n<table><tr><th style=\"text-align:left\"> HEADER 1 </th><th style=\"text-align:center\"> HEADER 2 </th><th style=\"text-align:right\"> HEADER 3 </th></tr><tr></tr><tr><td style=\"text-align:left\">content 1 </td><td style=\"text-align:center\"> content 2</td><td style=\"text-align:right\">content 3 </td></tr></table>\n</body>\n</html>";
 
 	@Test
 	public void testTable() throws IOException {

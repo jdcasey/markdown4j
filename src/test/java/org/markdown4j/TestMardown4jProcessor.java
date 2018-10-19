@@ -4,11 +4,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 
-import junit.framework.Assert;
-
 import org.junit.Test;
 
 import com.github.rjeschke.txtmark.test.MarkupFileTester;
+
+import junit.framework.Assert;
 /**
  * @author https://github.com/piergiuseppe82
  *
@@ -40,34 +40,6 @@ public class TestMardown4jProcessor {
 		Assert.assertEquals(expected, process);
 	}
 	
-	@Test
-	public void testPropertiesCode() throws IOException {
-		Markdown4jProcessor markdown4jProcessor = new Markdown4jProcessor();
-		markdown4jProcessor = markdown4jProcessor.registerPlugins(new PropertiesCodePlugin());
-		URL fileUrl = MarkupFileTester.class.getResource( "/propertiesPlugin.txt" );
-        FileReader file = new FileReader( fileUrl.getFile() );
-		String process = markdown4jProcessor.process(file);
-		System.out.println(process);
-	}
 	
-	@Test
-	public void testSQLCode() throws IOException {
-		Markdown4jProcessor markdown4jProcessor = new Markdown4jProcessor();
-		markdown4jProcessor = markdown4jProcessor.registerPlugins(new SqlCodePlugin());
-		URL fileUrl = MarkupFileTester.class.getResource( "/sqlPlugin.txt" );
-        FileReader file = new FileReader( fileUrl.getFile() );
-		String process = markdown4jProcessor.process(file);
-		System.out.println(process);
-	}
-	
-	@Test
-	public void testJSONCode() throws IOException {
-		Markdown4jProcessor markdown4jProcessor = new Markdown4jProcessor();
-		markdown4jProcessor = markdown4jProcessor.registerPlugins(new JSONCodePlugin());
-		URL fileUrl = MarkupFileTester.class.getResource( "/jsonPlugin.txt" );
-        FileReader file = new FileReader( fileUrl.getFile() );
-		String process = markdown4jProcessor.process(file);
-		System.out.println(process);
-	}
 
 }

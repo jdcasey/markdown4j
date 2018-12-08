@@ -888,7 +888,7 @@ public class Processor
                         {
                             break;
                         }
-                        if ( this.useExtensions && ( t == LineType.CODE || t == LineType.FENCED_CODE || t == LineType.PLUGIN ) )
+                        if ( this.useExtensions && ( t == LineType.CODE || t == LineType.FENCED_CODE || t == LineType.PLUGIN || t == LineType.TABLE ) )
                         {
                             break;
                         }
@@ -1012,6 +1012,26 @@ public class Processor
                     }
                     block.removeSurroundingEmptyLines();
                     break;
+                case TABLE:
+                    while ( line != null )
+                    {
+                        if ( line.getLineType( this.useExtensions ) == LineType.TABLE )
+                        {
+                        	line = line.next;
+                        }else{
+                        	break;
+                        }
+                        
+                    }
+                    if ( line != null )
+                    {
+                        line = line.next;
+                    }
+                    block = root.split( line != null ? line.previous : root.lineTail );
+                    block.type = BlockType.TABLE;
+                    block.meta = "table";
+                    block.removeSurroundingEmptyLines();
+                    break;
                 case HEADLINE:
                 case HEADLINE1:
                 case HEADLINE2:
@@ -1083,7 +1103,11 @@ public class Processor
         final StringBuilder out = new StringBuilder();
         final Block parent = this.readLines();
         parent.removeSurroundingEmptyLines();
-
+        this.config.decorator.openHtml(out);
+        this.config.decorator.openHtmlHeaders(out);
+        this.config.decorator.writeDefaultInternalStyle(out);
+        this.config.decorator.closeHtmlHeaders(out);
+        this.config.decorator.openBody(out);
         this.recurse( parent, false );
         Block block = parent.blocks;
         while ( block != null )
@@ -1091,7 +1115,8 @@ public class Processor
             this.emitter.emit( out, block );
             block = block.next;
         }
-
+        this.config.decorator.closeBody(out);
+        this.config.decorator.closeHtml(out);
         return out.toString();
     }
 }

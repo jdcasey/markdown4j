@@ -18,6 +18,7 @@ package com.github.rjeschke.txtmark;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -80,6 +81,7 @@ class Emitter
      */
     public void emit(final StringBuilder out, final Block root)
     {
+    	
         root.removeSurroundingEmptyLines();
 
         switch(root.type)
@@ -193,6 +195,9 @@ class Emitter
         case FENCED_CODE:
             this.emitCodeLines(out, block.lines, block.meta, false);
             break;
+        case TABLE:
+            this.emitTableLines(out, block.lines, block.meta);
+            break;
         case PLUGIN:
             this.emitPluginLines(out, block.lines, block.meta);
             break;
@@ -208,7 +213,24 @@ class Emitter
         }
     }
 
-    /**
+    private void emitTableLines(StringBuilder out, Line lines, String meta) {
+    	 Line line = lines;
+         if(this.config.codeBlockEmitter != null)
+         {
+             final ArrayList<String> list = new ArrayList<>();
+             while(line != null)
+             {
+                 if(line.isEmpty)
+                     list.add("");
+                 else
+                     list.add(line.value);
+                 line = line.next;
+             }
+             this.config.tableBlockEmitter.emitBlock(out, list, meta);
+         }
+	}
+
+	/**
      * Finds the position of the given Token in the given String.
      * 
      * @param in
@@ -662,7 +684,7 @@ class Emitter
                 }
                 else
                 {
-                    out.append("&lt;");
+                    out.append("&#060;");
                 }
                 break;
             case ENTITY:
@@ -675,7 +697,7 @@ class Emitter
                 }
                 else
                 {
-                    out.append("&amp;");
+                    out.append("&#038;");
                 }
                 break;
             case X_LINK_OPEN:
@@ -692,42 +714,42 @@ class Emitter
                 }
                 break;
             case X_COPY:
-                out.append("&copy;");
+                out.append("&#169;");
                 pos += 2;
                 break;
             case X_REG:
-                out.append("&reg;");
+                out.append("&#174;");
                 pos += 2;
                 break;
             case X_TRADE:
-                out.append("&trade;");
+                out.append("&#8482;");
                 pos += 3;
                 break;
             case X_NDASH:
-                out.append("&ndash;");
+                out.append("&#8211;");
                 pos++;
                 break;
             case X_MDASH:
-                out.append("&mdash;");
+                out.append("&#8212;");
                 pos += 2;
                 break;
             case X_HELLIP:
-                out.append("&hellip;");
+                out.append("&#133;");
                 pos += 2;
                 break;
             case X_LAQUO:
-                out.append("&laquo;");
+                out.append("&#171;");
                 pos++;
                 break;
             case X_RAQUO:
-                out.append("&raquo;");
+                out.append("&#187;");
                 pos++;
                 break;
             case X_RDQUO:
-                out.append("&rdquo;");
+                out.append("&#8221;");
                 break;
             case X_LDQUO:
-                out.append("&ldquo;");
+                out.append("&#8220;");
                 break;
             case ESCAPE:
                 pos++;
@@ -984,6 +1006,10 @@ class Emitter
      */
     private void emitCodeLines(final StringBuilder out, final Line lines, final String meta, final boolean removeIndent)
     {
+    	if(existPlugin(out,lines,meta)){
+    		emitPluginLines(out, lines, meta);
+    		return;
+    	}
         Line line = lines;
         if(this.config.codeBlockEmitter != null)
         {
@@ -1029,7 +1055,12 @@ class Emitter
             }
         }
     }
-    /**
+    
+    private boolean existPlugin(StringBuilder out, Line lines, String meta) {
+    	return plugins.get(meta)!= null;
+    }
+
+	/**
      * interprets a plugin block into the StringBuilder.
      * 
      * @param out

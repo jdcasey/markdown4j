@@ -260,6 +260,9 @@ class Line
 
         if(this.value.charAt(this.leading) == '>')
             return LineType.BQUOTE;
+        
+        if(this.value.contains("|"))
+            return LineType.TABLE;     
 
         if(extendedMode)
         {
@@ -272,10 +275,11 @@ class Line
                     return LineType.FENCED_CODE;
                 
                 if(this.countCharsStart('%') >= 3)
-                    return LineType.PLUGIN;                
+                    return LineType.PLUGIN;           
+                       
             }
         }
-
+        
         if(this.value.length() - this.leading - this.trailing > 2
                 && (this.value.charAt(this.leading) == '*' || this.value.charAt(this.leading) == '-' || this.value
                         .charAt(this.leading) == '_')

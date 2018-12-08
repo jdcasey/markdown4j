@@ -41,5 +41,7 @@ enum LineType
     /** Fenced code block start/end */
     FENCED_CODE,
     /** plugin block */
-    PLUGIN
+    PLUGIN,
+    /** table block */
+    TABLE
 }

@@ -45,5 +45,7 @@ enum BlockType
     /** A XML block. */
     XML,
     /** A plugin block. */
-    PLUGIN
+    PLUGIN,
+    /** A TABLE block. */
+    TABLE
 }

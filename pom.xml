@@ -8,12 +8,12 @@
 
   <groupId>org.commonjava.googlecode.markdown4j</groupId>
   <artifactId>markdown4j</artifactId>
-  <version>2.2-cj-1.2-SNAPSHOT</version>
+  <version>2.2-plc-1.6-SNAPSHOT</version>
 
   <scm>
-    <connection>scm:git:http://jdcasey@github.com/jdcasey/markdown4j.git</connection>
-    <developerConnection>scm:git:git@github.com:jdcasey/markdown4j.git</developerConnection>
-    <url>http://github.com/jdcasey/markdown4j</url>
+    <connection>scm:git:https://github.com/piergiuseppe82/markdown4j.git</connection>
+    <developerConnection>scm:git:git@github.com:piergiuseppe82/markdown4j.git</developerConnection>
+    <url>http://github.com/piergiuseppe82/markdown4j</url>
   </scm>
 
   <properties>
